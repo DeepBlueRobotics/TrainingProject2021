@@ -38,7 +38,7 @@ public class StringMotor extends CommandBase {
   public void execute() 
   {
 
-    double height = SmartDashboard.getNumber("a", 0);
+    double height = SmartDashboard.getNumber("height", 0);
     motor.run(height);
   }
 
