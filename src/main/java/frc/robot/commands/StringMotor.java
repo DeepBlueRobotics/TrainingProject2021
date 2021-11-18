@@ -4,32 +4,43 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.Motors;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Motors;
 
 /** An example command that uses an example subsystem. */
-public class ExampleCommand extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final Motors m_subsystem;
+public class StringMotor extends CommandBase {
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
+   * 
    */
-  public ExampleCommand(Motors subsystem) {
-    m_subsystem = subsystem;
+
+  private Motors motor;
+  public StringMotor(Motors motorType) 
+  {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(subsystem);
+    addRequirements(this.motor = motorType);
+    
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() 
+  { 
+
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() 
+  {
+
+    double height = SmartDashboard.getNumber("a", 0);
+    motor.run(height);
+  }
 
   // Called once the command ends or is interrupted.
   @Override
