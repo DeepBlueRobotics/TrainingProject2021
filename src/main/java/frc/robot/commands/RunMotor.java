@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Motors;
 
 /** An example command that uses an example subsystem. */
-public class StringMotor extends CommandBase {
+public class RunMotor extends CommandBase {
 
   /**
    * Creates a new ExampleCommand.
@@ -19,18 +19,18 @@ public class StringMotor extends CommandBase {
    */
 
   private Motors motor;
-  public StringMotor(Motors motorType) 
+  public RunMotor(Motors motorType) 
   {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(this.motor = motorType);
-    
+    SmartDashboard.putNumber("Height", 0);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() 
   { 
-
+    motor.run(SmartDashboard.getNumber("Height", 0));
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -38,8 +38,6 @@ public class StringMotor extends CommandBase {
   public void execute() 
   {
 
-    double height = SmartDashboard.getNumber("height", 0);
-    motor.run(height);
   }
 
   // Called once the command ends or is interrupted.
