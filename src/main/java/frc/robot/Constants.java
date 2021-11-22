@@ -17,4 +17,21 @@ public final class Constants {
     public static final class Motor {
         public static final int kSparkMax = 1;
     }
+
+    public static final class Controller 
+    {
+        public static final int kPort = 2;
+
+        // Buttons and triggers
+        public static final int ARM = 1; // button for arm
+        public static final int CALIBRATE = 2; // Button to calibrate position
+        public static final int B = 3;
+        public static final int Y = 4;
+        public static final int LB = 5;
+        public static final int RB = 6;
+        public static final int LT = 7;
+        public static final int RT = 8;
+        public static final int BACK = 9;
+        public static final int START = 10;
+    }
 }

@@ -32,6 +32,7 @@ public class Motors extends SubsystemBase {
 
   /** Creates a new ExampleSubsystem. */
   public Motors() {
+    motor.setIdleMode(CANSparkMax.IdleMode.kCoast);
     enc.setPosition(0);
     pid.setOutputRange(-5.9/12, 5.9/12);
     // encoder measures input shaft
@@ -57,9 +58,13 @@ public class Motors extends SubsystemBase {
   {
     return enc;
   }
+
+  // Input is in degrees
   public void setInitialPosition(double position) {
+    position = Math.toRadians(position);
     enc.setPosition(position);
   }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
