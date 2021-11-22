@@ -21,10 +21,10 @@ public class Motors extends SubsystemBase {
   private final CANEncoder enc = motor.getEncoder();
   private final CANPIDController pid = motor.getPIDController();
 
-  private final double gearRatio = 2;
+  private final double gearRatio = 64;
   //private final double diameter = 3;
   private final double conversion = (2*Math.PI) / gearRatio;
-  private final double lengthOfArm = 20; // in inches
+  private final double lengthOfArm = 14; // in inches
   double ff;
   double p;
   double i;
@@ -46,12 +46,13 @@ public class Motors extends SubsystemBase {
     SmartDashboard.putNumber("FF", ff);
 
     enc.setPositionConversionFactor(conversion);
+    SmartDashboard.putNumber("Initial Height", 0);
   }
 
   public void run(double height)
   {
     
-    pid.setReference(Math.asin(height/lengthOfArm), ControlType.kPosition);
+    pid.setReference(Math.asin((height - SmartDashboard.getNumber("Initial Height", 0))/lengthOfArm), ControlType.kPosition);
   }
 
   public CANEncoder getEnc()
